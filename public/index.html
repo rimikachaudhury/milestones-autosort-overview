@@ -1,0 +1,169 @@
+
+<!-- Path: overview.html -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resource-based overview</title>
+        <script src="https://kit.fontawesome.com/e72cb60ca7.js" crossorigin="anonymous"></script>
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="/node_modules/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+
+      <div class="jumbotron bg-dark text-white">
+
+        <div class="row">
+          <!-- First column with icon and title -->
+          <div class="col-1 d-flex align-items-center justify-content-center text-align-center">
+              <img src="./images/flagwhite.svg" alt="Sortify" style="width: 50px; height: 50px;">
+          </div>
+          <!-- Second column with title, subtitle, and info icon -->
+          <div class="col-9">
+              <h1 class="display-4">Sortify</h1>
+              <p class="lead">Organize the useful resources into meaningful groups to better manage your learning. <a href="#" class="text-primary"><i class="fas fa-info-circle"></i></a></p>
+              
+              
+          </div>
+          <!-- Third column with input field -->
+          <div class="col-12 col-md-2 order-3 order-md-2 d-flex align-items-end justify-content-center text-align-center">
+            <div class="input-group mb-2 ">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">@</span>
+              </div>
+              <input type="text" class="form-control" id="userInput" placeholder="username">
+              <button id="submit" type="submit" class="btn btn-primary" onclick="submitUserInput()">Go</button>
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+<!-- Toast Container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="deleteToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body">
+          <!-- Content will be dynamically updated -->
+      </div>
+  </div>
+</div>
+
+<div id="recategorizationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 10px; right: 50%; transform: translateX(50%);">
+  <div class="toast-body"></div>
+</div>
+
+    <!-- Last refreshed info -->
+    <div id="lastRefreshed" class="text-center my-3">page refreshed
+      <i id="refreshIcon" class="fa-solid fa-sync" style="cursor: pointer; margin-left: 10px;"></i>
+    </div>
+
+    <!-- Columns container -->
+    <div  class="container" id="columns-container" class="row mt-5"></div>
+    
+
+ <!-- Include jQuery and Bootstrap JS -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ <!-- Include Bootstrap JavaScript (and dependencies) in your HTML file -->
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+ <!-- Include your main script file -->
+ <script src="//cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb.js"></script>
+ <script src="resourceGroups.js"></script>
+ <script src="main.js"></script>
+ 
+ <script type="text/javascript">
+   var faunadb = window.faunadb
+   var q = faunadb.query
+   var client = new faunadb.Client({
+     secret: 'fnAFLgiyHqAARM3hOMlaMuvqhwwlaMIOVcKU66Os',
+     endpoint: 'https://db.us.fauna.com:443'
+   })
+   client.query(q.ToDate('2018-06-06')) // => 2018-06-06T00:00:00Z
+   .then((ret) => console.log(ret))
+   .catch((err) => console.error('Error: %s', err))
+
+ </script>
+
+
+
+
+<!-- Retired code below - keeping for reference - 10 March 2024 -->
+        <!-- <div id="overview-content">
+            Overview gets displayed here; 
+            check plugin-inspect from about: debugging for messages on the console
+        </div>
+
+        <div class="column">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#bbb;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#aaa;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#bbb;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#aaa;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#bbb;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#aaa;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#bbb;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#aaa;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div>
+          <div class="column" style="background-color:#bbb;">
+            <h2> site title </h2>
+            <p> base domain </p>
+            <span><a href> some url...</a></span>
+            <p> time elapsed </p>
+          </div> -->
+
+    <!-- Include your main.js file -->
+      
+
+    </body>
